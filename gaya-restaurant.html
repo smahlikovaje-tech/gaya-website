@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaya Korean Restaurant — 가야 레스토랑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080808;
+  --bg2:#111111;
+  --bg3:#161616;
+  --gold:#c8a96e;
+  --gold-l:#dfc49a;
+  --cream:#f5f0e8;
+  --muted:#888880;
+  --border:rgba(200,169,110,0.18);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 4rem;background:rgba(8,8,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:padding .3s}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold);letter-spacing:.06em}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 6rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(200,169,110,.06) 0%,transparent 70%);pointer-events:none}
+.hero-bg-char{position:absolute;font-family:'Cormorant Garamond',serif;font-size:clamp(12rem,28vw,22rem);color:rgba(200,169,110,.03);pointer-events:none;user-select:none;right:-2rem;top:50%;transform:translateY(-50%);letter-spacing:-.05em}
+.hero-tag{font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:.85}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9vw,6.5rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:.9rem;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;margin-bottom:3rem}
+.divider{width:50px;height:1px;background:var(--gold);margin:0 auto 3rem}
+.btn{display:inline-block;padding:.9rem 2.4rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;transition:all .3s}
+.btn:hover{background:var(--gold);color:var(--bg)}
+
+/* SECTIONS */
+section{padding:7rem 4rem}
+.s-label{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1.8rem}
+.s-div{width:40px;height:1px;background:var(--gold);margin-bottom:2.5rem}
+
+/* ABOUT */
+#o-nas{background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.about-p{color:var(--muted);font-size:.97rem;line-height:1.95;margin-bottom:1.4rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.stat{padding:2rem;border:1px solid var(--border);text-align:center;transition:border-color .3s}
+.stat:hover{border-color:var(--gold)}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--gold);display:block;line-height:1}
+.stat-l{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:.5rem;display:block}
+
+/* MENU */
+#menu{background:var(--bg)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-top:3rem}
+.menu-card{padding:2rem;border:1px solid var(--border);background:var(--bg3);transition:border-color .3s,transform .3s}
+.menu-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.mk{font-size:1.6rem;color:var(--gold);margin-bottom:.5rem;line-height:1}
+.mn{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;margin-bottom:.5rem}
+.md{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* HOURS */
+#oteviraci-doba{background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;gap:6rem}
+.hours-tbl{width:100%;border-collapse:collapse}
+.hours-tbl tr{border-bottom:1px solid var(--border)}
+.hours-tbl td{padding:.9rem 0;color:var(--muted);font-size:.88rem}
+.hours-tbl td:last-child{text-align:right;color:var(--cream)}
+.hours-tbl tr.closed td{opacity:.35}
+.loc p{color:var(--muted);font-size:.92rem;margin-bottom:.9rem}
+.loc .addr{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--cream);font-style:italic;line-height:1.5}
+
+/* REVIEWS */
+#recenze{background:var(--bg)}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:3rem}
+.rev-card{padding:2rem;border:1px solid var(--border);background:var(--bg3);transition:border-color .3s}
+.rev-card:hover{border-color:var(--gold)}
+.stars{color:var(--gold);font-size:.8rem;letter-spacing:.25em;margin-bottom:1.2rem}
+.rev-q{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;line-height:1.7;color:var(--cream);margin-bottom:1.5rem}
+.rev-who{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.rev-total{text-align:center;margin-top:3rem;font-size:.82rem;color:var(--muted);letter-spacing:.08em}
+
+/* FOOTER */
+footer{padding:5rem 4rem 3rem;border-top:1px solid var(--border);background:var(--bg2);display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:1.2rem}
+.f-text{font-size:.85rem;color:var(--muted);line-height:1.9}
+.f-head{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.f-links{list-style:none}
+.f-links li{margin-bottom:.8rem}
+.f-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .3s}
+.f-links a:hover{color:var(--gold)}
+.f-bot{padding:1.8rem 4rem;border-top:1px solid var(--border);background:var(--bg2);display:flex;justify-content:space-between;align-items:center}
+.f-bot p{font-size:.72rem;color:var(--muted);letter-spacing:.05em}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem}
+  .nav-links{display:none}
+  section{padding:4.5rem 1.5rem}
+  #o-nas,#oteviraci-doba{grid-template-columns:1fr;gap:3rem}
+  footer{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.5rem 2rem}
+  .f-bot{padding:1.5rem;flex-direction:column;gap:.5rem;text-align:center}
+  .hero-bg-char{display:none}
+}
+@media(max-width:500px){
+  .stats{grid-template-columns:1fr 1fr}
+  .menu-grid,.rev-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">가야 &nbsp;Gaya</div>
+  <ul class="nav-links">
+    <li><a href="#o-nas">O nás</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#oteviraci-doba">Hodiny</a></li>
+    <li><a href="#recenze">Recenze</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-char">가야</div>
+  <p class="hero-tag">가야 레스토랑 &nbsp;·&nbsp; Frýdek-Místek-Dobrá</p>
+  <h1>Autentická<br><em>korejská kuchyně</em></h1>
+  <p class="hero-sub">Zvenku nenápadné &nbsp;—&nbsp; uvnitř výjimečné</p>
+  <div class="divider"></div>
+  <a href="tel:603958950" class="btn">Rezervovat stůl &nbsp;·&nbsp; 603 958 950</a>
+</section>
+
+<!-- ABOUT -->
+<section id="o-nas">
+  <div>
+    <span class="s-label">O nás</span>
+    <h2>Chuť Koreje<br>v srdci Moravy</h2>
+    <div class="s-div"></div>
+    <p class="about-p">Gaya Korean Restaurant je místo, kde se setkává tradiční korejská kuchyně s přátelskou atmosférou. Přestože exteriér může působit skromně, interiér vás příjemně překvapí — stejně jako naše jídlo.</p>
+    <p class="about-p">Každé jídlo připravujeme s láskou a důrazem na autenticitu. Ať už přicházíte poprvé nebo jste naši stálí hosté, u nás se vždy cítíte jako doma. Platba kartou možná, parkování před restaurací.</p>
+  </div>
+  <div class="stats">
+    <div class="stat reveal">
+      <span class="stat-n">4.7</span>
+      <span class="stat-l">Hodnocení Google</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-n">145+</span>
+      <span class="stat-l">Spokojených hostů</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-n">300</span>
+      <span class="stat-l">Kč od osoby</span>
+    </div>
+    <div class="stat reveal">
+      <span class="stat-n">韓</span>
+      <span class="stat-l">Autentická kuchyně</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <span class="s-label">Naše speciality</span>
+  <h2>Menu</h2>
+  <div class="s-div"></div>
+  <div class="menu-grid">
+    <div class="menu-card reveal">
+      <div class="mk">해물탕</div>
+      <div class="mn">Mořská polévka</div>
+      <div class="md">Tradiční korejská polévka z čerstvých mořských plodů s výraznou pikantní chutí</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">갈비탕</div>
+      <div class="mn">Polévka z hovězích žeber</div>
+      <div class="md">Bohatá, dlouze vařená polévka s hovězími žebry, zeleninou a tradičním kořením</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">짜장면</div>
+      <div class="mn">Nudle s černou omáčkou</div>
+      <div class="md">Klasické korejské nudle s vepřovým masem a bohatou fermentovanou omáčkou</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">탕슉</div>
+      <div class="mn">Sladkokyselé vepřové</div>
+      <div class="md">Křupavé obalované vepřové s typicky korejskou sladkokyselou omáčkou</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">해물파전</div>
+      <div class="mn">Korejský mořský lívanec</div>
+      <div class="md">Tradiční pikantní lívanec s mořskými plody a jarní cibulkou, smažený do zlatova</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">육전</div>
+      <div class="mn">Yukjeon — smažené hovězí</div>
+      <div class="md">Jemně ochucené hovězí plátky obalené ve vejci, tradiční korejská specialita</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">반찬</div>
+      <div class="mn">Banchan — korejské přílohy</div>
+      <div class="md">Výběr tradičních malých korejských příloh podávaných ke každému jídlu</div>
+    </div>
+    <div class="menu-card reveal">
+      <div class="mk">팔보채</div>
+      <div class="mn">Palbochae — mořské plody</div>
+      <div class="md">Restované mořské plody se zeleninou v lahodné omáčce, delikátní specialita</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:3rem;color:var(--muted);font-size:.82rem;letter-spacing:.1em">A mnoho dalšího — přijďte ochutnat celé menu &nbsp;·&nbsp; Ceny od 300 Kč na osobu</p>
+</section>
+
+<!-- HOURS + LOCATION -->
+<section id="oteviraci-doba">
+  <div>
+    <span class="s-label">Kdy nás navštívit</span>
+    <h2>Otevírací<br>doba</h2>
+    <div class="s-div"></div>
+    <table class="hours-tbl">
+      <tr><td>Pondělí</td><td>11:00–13:00 &nbsp;/&nbsp; 17:00–21:00</td></tr>
+      <tr><td>Úterý</td><td>11:00–13:00 &nbsp;/&nbsp; 17:00–21:00</td></tr>
+      <tr><td>Středa</td><td>11:00–13:00 &nbsp;/&nbsp; 17:00–21:00</td></tr>
+      <tr><td>Čtvrtek</td><td>11:00–13:00 &nbsp;/&nbsp; 17:00–21:00</td></tr>
+      <tr><td>Pátek</td><td>11:00–13:00 &nbsp;/&nbsp; 17:00–21:00</td></tr>
+      <tr><td>Sobota</td><td>11:00–14:00</td></tr>
+      <tr class="closed"><td>Neděle</td><td>Zavřeno</td></tr>
+    </table>
+  </div>
+  <div class="loc" id="kontakt">
+    <span class="s-label">Kde nás najdete</span>
+    <h2>Adresa &amp;<br>kontakt</h2>
+    <div class="s-div"></div>
+    <p class="addr">Dobrá 180<br>738 01 Frýdek-Místek</p>
+    <br>
+    <p>Parkování přímo před restaurací</p>
+    <p>Platba kartou možná</p>
+    <p>Jídlo na místě &nbsp;·&nbsp; Jídlo s sebou</p>
+    <br><br>
+    <a href="tel:603958950" class="btn">603 958 950</a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="recenze">
+  <span class="s-label">Co říkají hosté</span>
+  <h2>Recenze</h2>
+  <div class="s-div"></div>
+  <div class="rev-grid">
+    <div class="rev-card reveal">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="rev-q">"Málokdy narazíte na takový kontrast mezi tím, jak vypadá podnik zvenku, a tím, jaká nádhera se skrývá uvnitř."</p>
+      <p class="rev-who">— Jan H. &nbsp;·&nbsp; Místní průvodce</p>
+    </div>
+    <div class="rev-card reveal">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="rev-q">"Stylové prostředí, ochotný personál. Jídlo velmi chutné — za vyzkoušení to rozhodně stojí."</p>
+      <p class="rev-who">— fotodzin &nbsp;·&nbsp; Místní průvodce</p>
+    </div>
+    <div class="rev-card reveal">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="rev-q">"Typická korejská kuchyně — po každé návštěvě odcházím spokojený. Platba kartou, parkování před restaurací."</p>
+      <p class="rev-who">— Tomáš L. &nbsp;·&nbsp; 502 recenzí</p>
+    </div>
+  </div>
+  <p class="rev-total">4.7 ★ &nbsp;·&nbsp; 145 recenzí na Google</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-logo">가야 &nbsp;Gaya</div>
+    <p class="f-text">Autentická korejská kuchyně<br>v srdci Frýdecko-Místecka.<br><br>가야 레스토랑<br>Korejská restaurace</p>
+  </div>
+  <div>
+    <span class="f-head">Navigace</span>
+    <ul class="f-links">
+      <li><a href="#o-nas">O nás</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#oteviraci-doba">Otevírací doba</a></li>
+      <li><a href="#recenze">Recenze</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+  <div>
+    <span class="f-head">Kontakt</span>
+    <ul class="f-links">
+      <li><a href="tel:603958950">603 958 950</a></li>
+      <li><a href="#">Dobrá 180</a></li>
+      <li><a href="#">738 01 Frýdek-Místek</a></li>
+      <li style="margin-top:1.5rem"><a href="#">Jídlo na místě</a></li>
+      <li><a href="#">Jídlo s sebou</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bot">
+  <p>© 2025 Gaya Korean Restaurant &nbsp;·&nbsp; 가야 레스토랑</p>
+  <p>Dobrá 180, 738 01 Frýdek-Místek-Dobrá</p>
+</div>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('in'), i * 80);
+    }
+  });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+</script>
+</body>
+</html>
